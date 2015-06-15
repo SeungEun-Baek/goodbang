@@ -93,8 +93,8 @@ html, body, #root-container {
 	position: absolute;
 	margin: 0;
 	padding: 5%;
-	background-color: white; 
-	-webkit-backface-visibility : hidden;
+	background-color: white;
+	-webkit-backface-visibility: hidden;
 	-moz-backface-visibility: hidden;
 	-o-backface-visibility: hidden;
 	backface-visibility: hidden;
@@ -224,21 +224,22 @@ html, body, #root-container {
 				</div>
 			</div>
 		</div>
-		<script>
-			$(document).ready(function() {
-				$("#input-button").click(function() {
-					$("#flip-container").attr("class", "flipped");
-				});
-				$("#flip-button1").click(function() {
-					$("#flip-container").attr("class", "flipped");
-				});
-				$("#map-button").click(function() {
-					$("#flip-container").attr("class", " ");
-				});
-				$("#flip-button2").click(function() {
-					$("#flip-container").attr("class", " ");
-				});
+	</div>
+	<script>
+		$(document).ready(function() {
+			$("#input-button").click(function() {
+				$("#flip-container").attr("class", "flipped");
 			});
-		</script>
+			$("#flip-button1").click(function() {
+				$("#flip-container").attr("class", "flipped");
+			});
+			$("#map-button").click(function() {
+				$("#flip-container").attr("class", " ");
+			});
+			$("#flip-button2").click(function() {
+				$("#flip-container").attr("class", " ");
+			});
+		});
+	</script>
 </body>
 </html>
