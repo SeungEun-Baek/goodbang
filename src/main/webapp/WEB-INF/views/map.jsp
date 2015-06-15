@@ -29,17 +29,23 @@ html, body, #root-container {
 	margin: 0;
 	padding: 0;
 	background-color: silver;
+	padding: 0;
 }
 
 #map-container {
 	height: 80%;
-	position: relative;
 	margin: 0;
 	padding: 0;
 	-webkit-perspective: 800px;
-	   -moz-perspective: 800px;
-	     -o-perspective: 800px;
-	        perspective: 800px;
+	-moz-perspective: 800px;
+	-o-perspective: 800px;
+	perspective: 800px;
+}
+
+#input-button-container, #map-button-container {
+	position: absolute;
+	right: 15px;
+	bottom: 30px;
 }
 
 #flip-container {
@@ -49,54 +55,53 @@ html, body, #root-container {
 	margin: 0;
 	padding: 0;
 	-webkit-transition: -webkit-transform 0.5s;
-	   -moz-transition: -moz-transform 0.5s;
-	     -o-transition: -o-transform 0.5s;
-	        transition: transform 0.5s;
+	-moz-transition: -moz-transform 0.5s;
+	-o-transition: -o-transform 0.5s;
+	transition: transform 0.5s;
 	-webkit-transform-style: preserve-3d;
-	   -moz-transform-style: preserve-3d;
-	     -o-transform-style: preserve-3d;
-	        transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-o-transform-style: preserve-3d;
+	transform-style: preserve-3d;
 	-webkit-transform-origin: right center;
-	   -moz-transform-origin: right center;
-	     -o-transform-origin: right center;
-	        transform-origin: right center;
+	-moz-transform-origin: right center;
+	-o-transform-origin: right center;
+	transform-origin: right center;
 }
 
-#flip-container.fliped {
-      -webkit-transform: translateX( -100% ) rotateY( -180deg );
-         -moz-transform: translateX( -100% ) rotateY( -180deg );
-           -o-transform: translateX( -100% ) rotateY( -180deg );
-              transform: translateX( -100% ) rotateY( -180deg );
+#flip-container.flipped {
+	-webkit-transform: translateX(-100%) rotateY(-180deg);
+	-moz-transform: translateX(-100%) rotateY(-180deg);
+	-o-transform: translateX(-100%) rotateY(-180deg);
+	transform: translateX(-100%) rotateY(-180deg);
 }
 
 #front-container {
-      height: 100%;
-      width: 100%;
-      position: absolute;
-      margin: 0;
-	  padding: 0;
-      -webkit-backface-visibility: hidden;
-         -moz-backface-visibility: hidden;
-           -o-backface-visibility: hidden;
-              backface-visibility: hidden;
-
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 
 #back-container {
-      height: 100%;
-      width: 100%;
-      position: absolute;
-      margin: 0;
-	  padding: 0;
-      -webkit-backface-visibility: hidden;
-         -moz-backface-visibility: hidden;
-           -o-backface-visibility: hidden;
-              backface-visibility: hidden;
-      background: blue;
-      -webkit-transform: rotateY( 180deg );
-         -moz-transform: rotateY( 180deg );
-           -o-transform: rotateY( 180deg );
-              transform: rotateY( 180deg );
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	margin: 0;
+	padding: 5%;
+	background-color: white; 
+	-webkit-backface-visibility : hidden;
+	-moz-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	-o-transform: rotateY(180deg);
+	transform: rotateY(180deg);
 }
 
 #list-container {
@@ -185,27 +190,55 @@ html, body, #root-container {
 			<div id="flip-container">
 				<div id="front-container">
 					<div id="map-canvas"></div>
+					<div id="input-button-container">
+						<button id="input-button" type="button"
+							class="btn btn-primary btn-lg" aria-label="To Input Form">
+							<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+						</button>
+					</div>
 				</div>
 				<div id="back-container">
-					<div id="input-form-container"></div>
+					<div id="input-form-container">
+						<form action="">
+							<input type="text" class="form-control" placeholder="Username"
+								aria-describedby="basic-addon1">
+						</form>
+
+						<div id="map-button-container">
+							<button id="map-button" type="button"
+								class="btn btn-primary btn-lg" aria-label="To Map">
+								<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="list-container">
+				<div id="inner-list-container">
+					<p>
+						<button id="flip-button1">click1</button>
+					</p>
+					<p>
+						<button id="flip-button2">click2</button>
+					</p>
 				</div>
 			</div>
 		</div>
-		<div id="list-container">
-			<div id="inner-list-container">
-			<p><button id="flip-button1">click1</button></p>
-			<p><button id="flip-button2">click2</button></p></div>
-		</div>
-	</div>
-<script>
-$(document).ready(function() {
-			$("#flip-button1").click(function() {
-					$("#flip-container").attr("class", "fliped");
+		<script>
+			$(document).ready(function() {
+				$("#input-button").click(function() {
+					$("#flip-container").attr("class", "flipped");
+				});
+				$("#flip-button1").click(function() {
+					$("#flip-container").attr("class", "flipped");
+				});
+				$("#map-button").click(function() {
+					$("#flip-container").attr("class", " ");
+				});
+				$("#flip-button2").click(function() {
+					$("#flip-container").attr("class", " ");
+				});
 			});
-			$("#flip-button2").click(function() {
-				$("#flip-container").attr("class", " ");
-		});
-});
-</script>
+		</script>
 </body>
 </html>
